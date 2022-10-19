@@ -12,6 +12,9 @@ FROM centos:8
 # dudle-maint.sh attempts to set container timezone the same as the host has. Alternatively it can be defined here:
 #ENV TZ=Europe/Helsinki
 
+RUN cd /etc/yum.repos.d/ && sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+
+RUN yum -y update
 RUN yum -y install httpd ruby ruby-devel git rubygems gcc make epel-release wget redhat-rpm-config
 RUN gem install gettext iconv
 RUN yum clean all

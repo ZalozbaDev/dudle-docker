@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 CONTAINER_NAME=my-running-dudle
 DOCKR=docker
@@ -25,7 +25,7 @@ run() {
         TZ_PARAM="-e TZ=${TZ}"
     fi
 
-    ${DOCKR} run -d -v /srv/dudle/backup:/backup:Z ${TZ_PARAM} -p 8888:80 --name ${CONTAINER_NAME} my-dudle || exit 1
+    ${DOCKR} run -d -v /containers/dudle/backup:/backup:Z ${TZ_PARAM} -p 8888:80 --name ${CONTAINER_NAME} my-dudle || exit 1
 }
 
 backup() {
