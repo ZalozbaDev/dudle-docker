@@ -1,6 +1,6 @@
 #! /bin/bash
 
-CONTAINER_NAME=my-running-dudle
+CONTAINER_NAME=dudle_dudle_1
 DOCKR=docker
 
 get_existing() {
