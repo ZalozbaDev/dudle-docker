@@ -108,8 +108,12 @@ for param in "$@"; do
             get_existing
             ${DOCKR} logs $CONTAINER_ID
             ;;
+        purge)
+            get_existing
+            ${DOCKR} exec $CONTAINER_ID /bin/bash -c ' cd /var/www/html/cgi-bin ; for i in $(find . -maxdepth 1 -mindepth 1 -type d | grep -v "extensions" | grep -v "locale" | grep -v "css" | grep -v ".git") ; do echo -n "Files modified in $i in last 30 days:"; find $i -ctime -30 | wc -l; echo -n "Page last read: "; date -r $i/last_read_access ; echo ; done '
+            ;;
         *)
-            echo "Usage: $0 [--podman] {run|backup|connect|start|stop|restart|upgrade|logs}"
+            echo "Usage: $0 [--podman] {run|backup|connect|start|stop|restart|upgrade|logs|purge}"
             exit 1
     esac
 
