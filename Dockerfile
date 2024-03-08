@@ -7,7 +7,7 @@
 # run:
 # docker run -it -p 8888:80 -v /srv/dudle-backup:/backup:Z  --rm --name my-running-dudle my-dudle
 
-FROM centos:8
+FROM centos:8.4.2105
 
 # dudle-maint.sh attempts to set container timezone the same as the host has. Alternatively it can be defined here:
 #ENV TZ=Europe/Helsinki

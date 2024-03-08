@@ -110,7 +110,7 @@ for param in "$@"; do
             ;;
         purge)
             get_existing
-            ${DOCKR} exec $CONTAINER_ID /bin/bash -c ' cd /var/www/html/cgi-bin ; for i in $(find . -maxdepth 1 -mindepth 1 -type d | grep -v "extensions" | grep -v "locale" | grep -v "css" | grep -v ".git") ; do echo -n "Page last read: "; date -r $i/last_read_access ; FILESMODIFIED=$(find $i -ctime -30 | wc -l); echo "Files modified in $i in last 30 days: $FILESMODIFIED" ; if [[ $FILESMODIFIED -eq 0 ]]; then echo "Archiving this poll!"; mv $i /backup/archived/ ; fi; echo ; done '
+            ${DOCKR} exec $CONTAINER_ID /bin/bash -c ' cd /var/www/html/cgi-bin ; for i in $(find . -maxdepth 1 -mindepth 1 -type d | grep -v "extensions" | grep -v "locale" | grep -v "css" | grep -v ".git") ; do echo -n "Page last read: "; date -r $i/last_read_access ; FILESMODIFIED=$(find $i -ctime -30 | wc -l); echo "Files modified in $i in last 30 days: $FILESMODIFIED" ; if [[ $FILESMODIFIED -eq 0 ]]; then echo "Archiving this poll!"; rm -rf /backup/archived/$i; mv $i /backup/archived/ ; fi; echo ; done '
             ;;
         *)
             echo "Usage: $0 [--podman] {run|backup|connect|start|stop|restart|upgrade|logs|purge}"
