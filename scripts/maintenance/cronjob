@@ -1,2 +1,3 @@
 
-* * * * * /dudle-maint.sh backup
+5 1 * * * root /dudle-maint.sh backup
+
