@@ -1,6 +1,6 @@
 #! /bin/bash
 
-CONTAINER_NAME=dudle_dudle_1
+CONTAINER_NAME=$(cat /container_name.txt)
 DOCKR=docker
 
 get_existing() {
