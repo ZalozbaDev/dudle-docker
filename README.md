@@ -12,6 +12,7 @@ Fetch Dudle sources, create the Docker image and a folder for backups:
 
     # cd dudle-docker
     # git clone https://github.com/ZalozbaDev/dudle.git cgi
+    # cd cgi && git checkout 2023_01_20_working
     # docker build -t my-dudle .
     # mkdir -p /srv/dudle/backup
 
